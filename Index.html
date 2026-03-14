@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Congratulations Rhianne</title>
+  <link rel="stylesheet" href="Styles.css">
+</head>
+
+<body>
+
+  <!-- White flash overlay -->
+  <div id="flash"></div>
+
+  <!-- Confetti canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+
+  <!-- ═══════════════════════════
+       CLOSED SCENE
+  ═══════════════════════════ -->
+  <div id="scene-closed">
+
+    <!-- Pink particle dots (injected by JS) -->
+    <div id="stars-layer"></div>
+
+    <div id="gift-wrap">
+      <svg viewBox="0 0 280 290" xmlns="http://www.w3.org/2000/svg" class="card">
+
+        <!-- Ground shadow -->
+        <ellipse cx="140" cy="283" rx="88" ry="9" fill="rgba(255,77,166,0.14)"/>
+
+        <!-- Box body -->
+        <rect x="40" y="148" width="200" height="130" rx="14" fill="#e8d0f2"/>
+
+        <!-- Vertical ribbon on body -->
+        <rect x="124" y="148" width="32" height="130" fill="#ff4da6"/>
+
+        <!-- Lid -->
+        <rect x="32" y="117" width="216" height="38" rx="10" fill="#f0d8f8"/>
+
+        <!-- Horizontal ribbon on lid -->
+        <rect x="32" y="126" width="216" height="22" fill="#ff4da6"/>
+
+        <!-- Bow left loop -->
+        <ellipse cx="106" cy="115" rx="37" ry="21" fill="#ff70ba" transform="rotate(-22,106,115)"/>
+
+        <!-- Bow right loop -->
+        <ellipse cx="174" cy="115" rx="37" ry="21" fill="#ff70ba" transform="rotate(22,174,115)"/>
+
+        <!-- Bow center knot -->
+        <ellipse cx="140" cy="119" rx="18" ry="14" fill="#ff80c4"/>
+
+      </svg>
+    </div>
+
+    <div id="instruction">Click the gift fast enough to open it!</div>
+
+  </div>
+
+
+  <!-- ═══════════════════════════
+       OPENED SCENE
+  ═══════════════════════════ -->
+  <div id="scene-open">
+
+    <!-- Polaroid frames (injected by JS) -->
+    <div id="polaroid-layer"></div>
+
+    <!-- Center: envelope on top, then box+lid below -->
+    <div id="center-column">
+
+      <!-- Envelope drifts and is clickable -->
+      <div id="envelope" class="card">
+
+        <!-- Spinning shine rays behind it -->
+        <div id="shine-rays"></div>
+
+        <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+          <rect x="14" y="14" width="168" height="112" rx="8" fill="#1a2060" opacity="0.82"/>
+          <rect x="8" y="8" width="168" height="112" rx="8" fill="#ffd6e8"/>
+          <path d="M8,8 Q92,72 176,8 Z" fill="#ffc0d8"/>
+          <path d="M8,120 L68,74"    stroke="#e060a0" stroke-width="1.2" opacity="0.3"/>
+          <path d="M176,120 L116,74" stroke="#e060a0" stroke-width="1.2" opacity="0.3"/>
+          <circle cx="92" cy="75" r="18" fill="#cc1060"/>
+          <circle cx="92" cy="75" r="13" fill="#ff4da6"/>
+          <path d="M92,82 C82,72 78,62 84,57 C88,54 92,57 92,57
+                   C92,57 96,54 100,57 C106,62 102,72 92,82Z"
+                fill="white" opacity="0.9"/>
+        </svg>
+
+        <div id="envelope-label">Open your letter 💌</div>
+
+      </div>
+
+      <!-- Open box row: lid on left + box body -->
+      <div id="opened-gift-row">
+
+        <!-- Lid tilted to the side -->
+        <div id="lid">
+          <svg viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg">
+            <rect x="32" y="86" width="216" height="42" rx="10" fill="#f0d8f8"/>
+            <rect x="32" y="95" width="216" height="24" fill="#ff4da6"/>
+            <rect x="124" y="86" width="32" height="42" fill="#ff4da6"/>
+            <ellipse cx="106" cy="83" rx="40" ry="23" fill="#ff70ba" transform="rotate(-22,106,83)"/>
+            <ellipse cx="174" cy="83" rx="40" ry="23" fill="#ff70ba" transform="rotate(22,174,83)"/>
+            <ellipse cx="140" cy="87" rx="19" ry="15" fill="#ff80c4"/>
+            <path d="M130,97 Q118,115 108,122 Q122,116 136,104 Z" fill="#ff4da6"/>
+            <path d="M150,97 Q162,115 172,122 Q158,116 144,104 Z" fill="#ff4da6"/>
+          </svg>
+        </div>
+
+        <!-- Open box body -->
+        <div id="opened-box">
+          <svg viewBox="0 0 280 155" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="140" cy="151" rx="93" ry="8" fill="rgba(190,80,155,0.1)"/>
+            <rect x="40" y="22" width="200" height="124" rx="14" fill="#e8d0f2"/>
+            <rect x="40" y="22" width="200" height="16" rx="10" fill="#f0d8f8"/>
+            <rect x="124" y="22" width="32" height="124" fill="#ff4da6"/>
+          </svg>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ═══════════════════════════
+       LETTER MODAL
+  ═══════════════════════════ -->
+  <div id="letter-overlay">
+    <div id="letter-paper">
+
+      <button id="letter-close">✕</button>
+
+      <div id="letter-greeting">Congratulations, Rhianne!</div>
+
+      <div id="letter-body">
+        <p>You did it. You actually, truly did it.</p>
+        <p>All the effort that you have put in, the late night works, group meetings, stress, hard work and dedication for the last 12 years has finally come to show the value of it.</p>
+        <p>I am so proud of you! I'm so proud of the achievements you've made, effort and pain you went through, and the amazing person that you have become.</p>
+        <p>I truly admire you so much, I admire your intelligence, your kindness, your thoughtfulness, your attractiveness, your humor, your dedication. Every little thing about you is truly so special.</p>
+        <p>We now enter a new chapter in life, So keep doing your best and never give up my love. I am so proud of you and I love you so much 💛</p>
+      </div>
+
+      <div id="letter-sig">- Yours truly, Zy 💛</div>
+
+    </div>
+  </div>
+
+
+  <script src="Script.js"></script>
+</body>
+
+</html>
